@@ -1,0 +1,28 @@
+<div
+  [ngClass]="{ sidebarPushRight: isActive, collapsed: collapsed }"
+  class="sidebar"
+>
+  <div class="textContenu">
+    <ng-container *ngIf="collapsed == false">
+      <!-- {{ data.district }}
+      {{ data.commune }} -->
+
+      <div *ngFor="let item of contenuDistrict | keyvalue">
+        {{ item.key }}:{{ item.value }}<br />
+      </div>
+      <div *ngFor="let item of contenuCommune | keyvalue">
+        {{ item.key }}:{{ item.value }}<br />
+      </div>
+    </ng-container>
+  </div>
+
+  <div
+    (click)="toggleCollapsed()"
+    [ngClass]="{ collapsed: collapsed }"
+    class="toggle-button"
+  >
+    <i class="fa fa-fw fa-angle-double-{{ collapsed ? 'right' : 'left' }}"></i
+    >&nbsp;
+    <span>Réduire</span>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<header>
+  <br />
+  <h2>Carte interactive de Fianarantsoa</h2>
+  <br />
+</header>
+
+<main>
+  <app-sidebar
+    class="left-bar"
+    (collapsedEvent)="receiveCollapsed($event)"
+  ></app-sidebar>
+
+  <app-contenu
+    [ngClass]="{ collapsed: collapedSideBar }"
+    class="map-container"
+  ></app-contenu>
+</main>
+
+<!-- <footer>
+  <p>coopyright @ antsorandriamarojaona@gmail.com</p>
+</footer> -->

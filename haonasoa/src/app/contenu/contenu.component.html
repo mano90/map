@@ -1,0 +1,346 @@
+<div class="controlStructure">
+  <button
+    [disabled]="statistiqueState === true"
+    [ngClass]="{ buttonAnimated: statistiqueState === false }"
+    class="buttonFirstItem controlStructureButton"
+    (click)="statistiqueMode()"
+  >
+    Statistique
+  </button>
+  <!--  -->
+
+  <button
+    [disabled]="statistiqueState === false"
+    [ngClass]="{ buttonAnimated: statistiqueState === true }"
+    class="buttonFirstItem controlStructureButton"
+    (click)="normalModel()"
+  >
+    Tsotra
+  </button>
+  <!-- -->
+  <br />
+  <hr />
+  <ng-container *ngIf="statistiqueState === true">
+    <button
+      [disabled]="statistiqueDistrict === true"
+      [ngClass]="{ buttonAnimated2: statistiqueDistrict === false }"
+      class="buttonSecondItem controlStructureButton"
+      (click)="showDistrictStatistique()"
+    >
+      District
+    </button>
+    <button
+      [disabled]="statistiqueDistrict === false"
+      [ngClass]="{ buttonAnimated2: statistiqueDistrict === true }"
+      class="buttonSecondItem controlStructureButton"
+      (click)="showCommuneStatistique()"
+    >
+      Commune
+    </button>
+  </ng-container>
+
+  <select
+    (change)="changeRubrique()"
+    class="controlStructureInput form-control"
+    *ngIf="statistiqueState"
+    name="statisticI"
+    [(ngModel)]="statisticI"
+  >
+    <option value="-1" disabled selected>Choisir un rubrique</option>
+
+    <ng-container *ngFor="let rubrique of rubriques">
+      <option value="{{ rubrique.id }}">{{ rubrique.nom }}</option>
+    </ng-container>
+  </select>
+</div>
+
+<!-- {{ statistiqueInput }} -->
+<div
+  [ngClass]="{ activeBackground: statistiqueState === true }"
+  #divider
+  (window:resize)="onResize($event)"
+></div>
+
+<button *ngIf="level !== 0" (click)="prevElement()" class="backButton">
+  <svg
+    height="40"
+    version="1.1"
+    width="40"
+    xmlns="http://www.w3.org/2000/svg"
+    style="overflow: hidden; position: relative; left: -0.25px"
+  >
+    <desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"></desc>
+    <defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"></defs>
+    <path
+      fill="#f7f7f7"
+      stroke="#636363"
+      d="M2.158,0.263H7.8420000000000005C8.892000000000001,0.263,9.737,1.108,9.737,2.158V7.8420000000000005C9.737,8.892000000000001,8.892,9.737,7.8420000000000005,9.737H2.1580000000000004C1.1080000000000003,9.737,0.26300000000000034,8.892,0.26300000000000034,7.8420000000000005V2.1580000000000004C0.26300000000000034,1.1080000000000003,1.1080000000000003,0.26300000000000034,2.1580000000000004,0.26300000000000034Z"
+      stroke-width="0.25"
+      stroke-opacity="0"
+      fill-opacity="0"
+      transform="matrix(4,0,0,4,0,0)"
+      style="
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        stroke-opacity: 0;
+        fill-opacity: 0;
+        cursor: pointer;
+      "
+    ></path>
+    <path
+      fill="#f7f7f7"
+      stroke="#636363"
+      d="M7.07,8.721C9.944,7.386,9.08,2.9590000000000005,4.720000000000001,3.0600000000000005V1.2820000000000005L1.2750000000000008,3.9760000000000004L4.720000000000001,6.819000000000001V5.001000000000001C8.358,4.925000000000002,8.192,7.803000000000001,7.07,8.722000000000001Z"
+      stroke-width="0.375"
+      stroke-opacity="1"
+      fill-opacity="1"
+      transform="matrix(4,0,0,4,0,0)"
+      style="
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        stroke-opacity: 1;
+        fill-opacity: 1;
+        cursor: pointer;
+      "
+    ></path>
+  </svg>
+</button>
+<div class="contentStatistique" *ngIf="statistiqueState === true">
+  <svg width="100%" height="60">
+    <g class="legend-key" transform="translate(20,20)">
+      <rect height="10" x="0" [attr.width]="xLegend" class="q0"></rect>
+      <rect
+        height="10"
+        [attr.x]="xLegend"
+        [attr.width]="xLegend"
+        class="q1"
+      ></rect>
+      <rect
+        height="10"
+        [attr.x]="xLegend * 2"
+        [attr.width]="xLegend"
+        class="q2"
+      ></rect>
+      <rect
+        height="10"
+        [attr.x]="xLegend * 3"
+        [attr.width]="xLegend"
+        class="q3"
+      ></rect>
+      <rect
+        height="10"
+        [attr.x]="xLegend * 4"
+        [attr.width]="xLegend"
+        class="q4"
+      ></rect>
+      <rect
+        height="10"
+        [attr.x]="xLegend * 5"
+        [attr.width]="xLegend"
+        class="q5"
+      ></rect>
+      <rect
+        height="10"
+        [attr.x]="xLegend * 6"
+        [attr.width]="xLegend"
+        class="q6"
+      ></rect>
+      <rect
+        height="10"
+        [attr.x]="xLegend * 7"
+        [attr.width]="xLegend"
+        class="q7"
+      ></rect>
+      <rect
+        height="10"
+        [attr.x]="xLegend * 8"
+        [attr.width]="xLegend"
+        class="q8"
+      ></rect>
+      <rect
+        height="10"
+        [attr.x]="xLegend * 9"
+        [attr.width]="xLegend"
+        class="q9"
+      ></rect>
+      <text class="caption" y="-6"></text>
+      <g class="tick" transform="translate(0,0)" style="opacity: 1">
+        <line y2="13" x2="0"></line>
+        <text dy=".71em" y="16" x="0" style="text-anchor: middle">0.1</text>
+      </g>
+
+      <g
+        class="tick"
+        [attr.transform]="'translate(' + xLegend + ', 0)'"
+        style="opacity: 1"
+      >
+        <line y2="13" x2="0"></line>
+        <text dy=".71em" y="16" x="0" style="text-anchor: middle">
+          {{ intervalData }}
+        </text>
+      </g>
+      <g
+        class="tick"
+        [attr.transform]="'translate(' + xLegend * 2 + ', 0)'"
+        style="opacity: 1"
+      >
+        <line y2="13" x2="0"></line>
+        <text dy=".71em" y="16" x="0" style="text-anchor: middle">
+          {{ intervalData * 2 }}
+        </text>
+      </g>
+      <g
+        class="tick"
+        [attr.transform]="'translate(' + xLegend * 3 + ', 0)'"
+        style="opacity: 1"
+      >
+        <line y2="13" x2="0"></line>
+        <text dy=".71em" y="16" x="0" style="text-anchor: middle">
+          {{ intervalData * 3 }}
+        </text>
+      </g>
+      <g
+        class="tick"
+        [attr.transform]="'translate(' + xLegend * 4 + ', 0)'"
+        style="opacity: 1"
+      >
+        <line y2="13" x2="0"></line>
+        <text dy=".71em" y="16" x="0" style="text-anchor: middle">
+          {{ intervalData * 4 }}
+        </text>
+      </g>
+      <g
+        class="tick"
+        [attr.transform]="'translate(' + xLegend * 5 + ', 0)'"
+        style="opacity: 1"
+      >
+        <line y2="13" x2="0"></line>
+        <text dy=".71em" y="16" x="0" style="text-anchor: middle">
+          {{ intervalData * 5 }}
+        </text>
+      </g>
+      <g
+        class="tick"
+        [attr.transform]="'translate(' + xLegend * 6 + ', 0)'"
+        style="opacity: 1"
+      >
+        <line y2="13" x2="0"></line>
+        <text dy=".71em" y="16" x="0" style="text-anchor: middle">
+          {{ intervalData * 6 }}
+        </text>
+      </g>
+      <g
+        class="tick"
+        [attr.transform]="'translate(' + xLegend * 7 + ', 0)'"
+        style="opacity: 1"
+      >
+        <line y2="13" x2="0"></line>
+        <text dy=".71em" y="16" x="0" style="text-anchor: middle">
+          {{ intervalData * 7 }}
+        </text>
+      </g>
+      <g
+        class="tick"
+        [attr.transform]="'translate(' + xLegend * 8 + ', 0)'"
+        style="opacity: 1"
+      >
+        <line y2="13" x2="0"></line>
+        <text dy=".71em" y="16" x="0" style="text-anchor: middle">
+          {{ intervalData * 8 }}
+        </text>
+      </g>
+      <g
+        class="tick"
+        [attr.transform]="'translate(' + xLegend * 9 + ', 0)'"
+        style="opacity: 1"
+      >
+        <line y2="13" x2="0"></line>
+        <text dy=".71em" y="16" x="0" style="text-anchor: middle">
+          {{ intervalData * 9 }}
+        </text>
+      </g>
+      <g
+        class="tick"
+        [attr.transform]="'translate(' + xLegend * 10 + ', 0)'"
+        style="opacity: 1"
+      >
+        <line y2="13" x2="0"></line>
+        <text dy=".71em" y="16" x="0" style="text-anchor: middle">
+          {{ intervalData * 10 }}
+        </text>
+      </g>
+      <path class="domain" d="M0,13V0H910V13"></path>
+    </g>
+  </svg>
+</div>
+
+<ng-template #showDistrict let-modal>
+  <div class="modal-header customModal">
+    <h3>District</h3>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="table table-bordered">
+      <tbody *ngFor="let item of dataSourceDistrict; let i = index">
+        <tr #tableDistrict>
+          <td>
+            {{ item.title }}
+          </td>
+          <td>
+            {{ item.value }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
+
+<ng-template #showCommune let-modal>
+  <div class="modal-header customModal">
+    <h3>Commune</h3>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="table table-bordered">
+      <tbody *ngFor="let item of dataSourceDistrict; let i = index">
+        <tr #tableDistrict>
+          <td>
+            {{ item.title }}
+          </td>
+          <td>
+            {{ item.value }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
+
+<ng-template #showStatisticCommune let-modal>
+  <div class="modal-header customModal">
+    <h3>Statistique</h3>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    {{ dataStatistique }}
+  </div>
+</ng-template>

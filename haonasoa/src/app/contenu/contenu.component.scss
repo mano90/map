@@ -1,0 +1,261 @@
+.background {
+  fill: none;
+  pointer-events: all;
+}
+
+#content .info {
+  height: 20px;
+}
+
+#content .map path {
+  fill: #aaa;
+  stroke: #fff;
+}
+
+#content .centroid {
+  display: none;
+}
+
+#content .centroid circle {
+  fill: red;
+}
+path:hover {
+  fill: #6b5757;
+}
+
+#district {
+  fill: rgb(138, 127, 127);
+  stroke: white;
+  stroke-width: 1.5px;
+}
+
+#district .active {
+  fill: rgb(115, 255, 0) !important;
+}
+
+#commune {
+  fill: rgb(1, 76, 95);
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+#commune .active {
+  fill: rgb(229, 245, 12) !important;
+}
+
+#fokontany {
+  fill: rgb(250, 213, 6);
+  stroke: #fff;
+  stroke-width: 0.5px;
+}
+
+#fokontany .active {
+  fill: rgb(12, 245, 31) !important;
+}
+.tooltip {
+  font-weight: bold;
+  padding: 0.5rem;
+  border: 1px solid silver;
+  color: #222;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px #a6a6a6;
+  opacity: 0.9;
+  position: absolute;
+  font-size: 1.5rem;
+}
+.hidden {
+  display: none;
+}
+.backButton {
+  position: absolute;
+  bottom: 10%;
+  z-index: 2;
+  left: 20%;
+  padding: 10px;
+  border-radius: 10%;
+}
+body {
+  overflow-x: hidden !important;
+}
+
+.emptyOpacity {
+  opacity: 0.5;
+}
+// .controlStructureButton {
+//   float: right;
+//   left: 200px;
+// }
+.controlStructureInput {
+  width: 200px;
+  margin-bottom: 5px;
+}
+
+.controlStructure {
+  float: right;
+  padding-right: 5%;
+  padding-top: 5px;
+  button {
+    margin-bottom: 5px;
+    margin-left: 5px;
+  }
+}
+.activeBackground {
+  svg {
+    background-color: #efefef;
+    border: 1px solid rgba(134, 128, 128, 0.801);
+    display: block;
+    margin: auto;
+  }
+}
+.contentStatistique {
+  width: 80vw;
+  height: 200px;
+  border: 1px solid rgba(134, 128, 128, 0.801);
+  display: block;
+  margin: auto;
+}
+
+.legend-key path {
+  display: none;
+}
+
+.legend-key text {
+  font-size: 1rem;
+}
+
+.legend-key line {
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.legend-key {
+  border: 1px solid silver;
+  border-top: 0;
+  display: block;
+  margin: auto;
+}
+.q0 {
+  fill: rgb(255, 255, 217);
+}
+.q1 {
+  fill: rgb(232, 247, 152);
+}
+.q2 {
+  fill: rgb(199, 233, 180);
+}
+.q3 {
+  fill: rgb(127, 205, 187);
+}
+.q4 {
+  fill: rgb(65, 182, 196);
+}
+.q5 {
+  fill: rgb(29, 145, 192);
+}
+.q6 {
+  fill: rgb(62, 146, 167);
+}
+.q7 {
+  fill: rgb(3, 101, 126);
+}
+.q8 {
+  fill: rgb(0, 60, 75);
+}
+.q9 {
+  fill: rgb(0, 26, 32);
+}
+
+g.features {
+  stroke: #d8d8d8;
+  stroke-width: 0.5;
+}
+g.features path:hover {
+  opacity: 0.5;
+}
+.q29 {
+  fill: rgb(255, 255, 217);
+}
+path {
+  cursor: pointer;
+}
+
+/* CSS */
+.buttonFirstItem {
+  --b: 3px; /* border thickness */
+  --s: 0.45em; /* size of the corner */
+  --color: #373b44;
+
+  padding: calc(0.5em + var(--s)) calc(0.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background: conic-gradient(
+      from 90deg at var(--b) var(--b),
+      #0000 90deg,
+      var(--color) 0
+    )
+    var(--_p) var(--_p) / calc(100% - var(--b) - 2 * var(--_p))
+    calc(100% - var(--b) - 2 * var(--_p));
+  transition: 0.3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: 0.6em;
+  font-size: 16px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.buttonAnimated:hover,
+.buttonAnimated:focus-visible {
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: 0.05em;
+}
+
+.buttonAnimated:active {
+  background: var(--color);
+  color: #fff;
+}
+
+.buttonSecondItem {
+  align-self: center;
+  background-color: #fff;
+  background-image: none;
+  background-position: 0 90%;
+  background-repeat: repeat no-repeat;
+  background-size: 4px 3px;
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, 0.2) 15px 28px 25px -18px;
+  box-sizing: border-box;
+  color: #41403e;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Neucha, sans-serif;
+  font-size: 1rem;
+  line-height: 23px;
+  outline: none;
+  padding: 0.75rem;
+  text-decoration: none;
+  transition: all 235ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.buttonAnimated2:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
+}
+
+.buttonAnimated2:focus {
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 4px -6px;
+}
